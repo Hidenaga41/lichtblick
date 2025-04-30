@@ -197,6 +197,8 @@ export function AppBar(props: AppBarProps): React.JSX.Element {
   const userMenuOpen = Boolean(userAnchorEl);
   const panelMenuOpen = Boolean(panelAnchorEl);
 
+  const isLinux = process.platform === 'linux';
+
   return (
     <>
       <AppBarContainer onDoubleClick={onDoubleClick} leftInset={leftInset}>
@@ -309,7 +311,7 @@ export function AppBar(props: AppBarProps): React.JSX.Element {
                   <Avatar className={classes.avatar} variant="rounded" />
                 </IconButton>
               </Tooltip>
-              {showCustomWindowControls && (
+              {showCustomWindowControls && !isLinux && (
                 <CustomWindowControls
                   onMinimizeWindow={onMinimizeWindow}
                   isMaximized={isMaximized}
